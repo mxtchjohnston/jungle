@@ -19,9 +19,10 @@
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |item| %>
-          <%= render 'line_item', product: item, quantity: item[:quantity].to_i %>
-        <% end %>
+        <% @products.each do |product| %>
+            <% line_item = @line_items.find { |item| item.product_id == product.id } %>
+            <%= render 'line_item', product: product, quantity: line_item.quantity %>
+          <% end %>
       </tbody>
       <tfoot>
         <tr>
@@ -29,7 +30,7 @@
             TOTAL:
           </th>
           <th class="money">
-            <%= humanized_money_with_symbol (cart_subtotal_cents / 100.0) %>
+            <%= humanized_money_with_symbol (@order.total_cents / 100.0) %>
           </th>
         </tr>
       </tfoot>
