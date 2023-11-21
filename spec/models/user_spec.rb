@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it "should not create a user if password is less than 6 characters" do
+    it "should not create a user if password is less than 8 characters" do
       @user = User.create(first: "some", last: "name", email: "test@example.com", password: "pass", password_confirmation: "pass")
       expect(@user).to_not be_valid
     end
@@ -52,6 +52,9 @@ RSpec.describe User, type: :model do
       @user = User.create(first: "some", last: "name", email: "testexample.com", password: "password", password_confirmation: "password")
       expect(@user).to_not be_valid
     end
+  end
+
+  describe ".authenticate_with_credentials" do
     
   end
 end
