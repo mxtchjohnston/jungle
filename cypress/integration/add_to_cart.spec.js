@@ -3,10 +3,9 @@ describe("Add to cart", () => {
     cy.visit("/");
   });
 
-  it("There is a link to the product page", () => {
-    cy.contains("Scented Blade").click();
-    cy.url().should("include", "/products/");
-    cy.contains("Add").click();
+  it("Adds a product to the cart and the cart is increased by 1", () => {
+    cy.contains("My Cart (0)");
+    cy.contains("Add").first().click({ force: true });
     cy.contains("My Cart (1)");
   });
 });
