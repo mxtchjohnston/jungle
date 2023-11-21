@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :password, :password_confirmation, length: { minimum: 8, message: "Password must be at least 8 characters" }
   
   def self.authenticate_with_credentials(email, password)
-    user = User.find_by_email(email)
+    user = User.find_by_email(email.downcase.strip)
     if user && user.authenticate(password)
       user
     else
