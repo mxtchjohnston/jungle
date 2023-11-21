@@ -55,6 +55,9 @@ RSpec.describe User, type: :model do
   end
 
   describe ".authenticate_with_credentials" do
-    
+    it "should fail if username and password are incorrect" do
+      @user =  @user = User.create(first: "some", last: "name", email: "test@example.com", password: "password", password_confirmation: "password")
+      expect(User.authenticate_with_credentials(@user.email, "password1")).to be_nil
+    end
   end
 end
