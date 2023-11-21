@@ -21,6 +21,5 @@ describe("Product page", () => {
     cy.get(".product-detail").should("be.visible");
     cy.get(".quantity").should("be.visible");
     cy.get(".price").should("be.visible");
-
   })
 });
