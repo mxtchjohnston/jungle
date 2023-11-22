@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
+    @sold_out = (@product.quantity == 0)
   end
 
 end
